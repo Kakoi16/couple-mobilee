@@ -1,0 +1,7 @@
+{
+  "name": "couple",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
