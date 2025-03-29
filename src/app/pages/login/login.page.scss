@@ -1,0 +1,14 @@
+:root {
+    --ion-color-primary: #3880ff;
+    --ion-color-medium: #92949c;
+  }
+  @media (prefers-color-scheme: dark) {
+    .login-page {
+      --ion-background-color: #1a1a1a;
+      --ion-text-color: #ffffff;
+      
+      ion-content {
+        --background: linear-gradient(135deg, #2c3e50 0%, #1a1a1a 100%);
+      }
+    }
+  }

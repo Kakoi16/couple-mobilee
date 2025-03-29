@@ -1,12 +1,9 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Couple Web</ion-title>
-  </ion-toolbar>
 </ion-header>
 
 <ion-content class="bg-gray-900 text-white">
   <style>
-    /* Efek Parallax */
+    /* Efek Parallax Modern */
     .parallax {
       position: relative;
       height: 100vh;
@@ -15,15 +12,16 @@
 
     .parallax-bg {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 50%;
+      left: 50%;
       width: 100%;
       height: 100%;
       background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
-      transform: translateY(0);
-      transition: transform 0.1s ease-out;
+      background-position: center center;
+      will-change: transform;
+      transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+      transform: translate(-50%, -50%);
+      object-fit: cover;
     }
 
     .parallax-content {
@@ -34,78 +32,223 @@
       align-items: center;
       justify-content: center;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
+      background: linear-gradient(135deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
       padding: 20px;
-      border-radius: 10px;
+      text-align: center;
     }
 
-    /* Pastikan background-attachment: fixed hanya di desktop */
+    /* Animasi Gelombang Modern */
+    .wave-text {
+      display: inline-block;
+      position: relative;
+    }
+
+    .wave-text span {
+      display: inline-block;
+      position: relative;
+      animation: waveAnimation 2.5s infinite ease-in-out;
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255,255,255,0.3);
+    }
+
+    /* Warna berbeda untuk setiap huruf */
+    .wave-text span:nth-child(1) { animation-delay: 0.1s; color: #ff9a9e; }
+    .wave-text span:nth-child(2) { animation-delay: 0.2s; color: #fad0c4; }
+    .wave-text span:nth-child(3) { animation-delay: 0.3s; color: #fbc2eb; }
+    .wave-text span:nth-child(4) { animation-delay: 0.4s; color: #a6c1ee; }
+    .wave-text span:nth-child(5) { animation-delay: 0.5s; color: #84fab0; }
+    .wave-text span:nth-child(6) { animation-delay: 0.6s; color: #8fd3f4; }
+
+    @keyframes waveAnimation {
+      0%, 100% { transform: translateY(0) scale(1); }
+      25% { transform: translateY(-15px) scale(1.1); }
+      50% { transform: translateY(0) rotate(5deg); }
+      75% { transform: translateY(-10px) rotate(-5deg); }
+    }
+
+    /* Tombol Modern */
+    .modern-btn {
+      background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+      border-radius: 50px;
+      padding: 15px 30px;
+      margin-top: 30px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(250, 208, 196, 0.4);
+      transition: all 0.3s ease;
+      border: none;
+      color: #333;
+    }
+
+    .modern-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(250, 208, 196, 0.6);
+    }
+
+    /* Card Modern */
+    .modern-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modern-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .modern-card img, .modern-card video {
+      transition: transform 0.5s ease;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modern-card:hover img, .modern-card:hover video {
+      transform: scale(1.05);
+    }
+
+    /* Typography */
+    .subtitle {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      background: linear-gradient(90deg, #fbc2eb 0%, #a6c1ee 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Link untuk Y dan K */
+    .profile-link {
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .profile-link:hover {
+      transform: scale(1.1);
+    }
+
+    .profile-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: currentColor;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-link:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
-      .parallax-bg {
-        background-attachment: scroll;
+      .parallax-content {
+        padding: 15px;
+      }
+      
+      @keyframes waveAnimation {
+        0%, 100% { transform: translateY(0) scale(1); }
+        25% { transform: translateY(-8px) scale(1.05); }
+        50% { transform: translateY(0) rotate(3deg); }
+        75% { transform: translateY(-5px) rotate(-3deg); }
+      }
+      
+      .modern-btn {
+        padding: 12px 25px;
+        font-size: 0.9rem;
       }
     }
   </style>
 
   <!-- Parallax Section 1 -->
-  <div class="parallax">
+  <div class="parallax" id="parallax1">
     <div class="parallax-bg" style="background-image: url('./assets/img/bg1.jpg');"></div>
     <div class="parallax-content">
-      <h1 class="text-4xl md:text-6xl font-extrabold">Welcome to CP We</h1>
-      <p class="mt-4 text-lg text-gray-300">
-        Explore the couple web <span><a routerLink="/registered">Y</a></span> & 
-        <span><a routerLink="/registered">K</a></span>
+      <h1 class="text-5xl md:text-7xl font-bold wave-text">
+        <span>H</span>
+        <span>A</span>
+        <span>L</span>
+        <span>L</span>
+        <span>O</span>
+        <span>W</span>
+      </h1>
+      <p class="subtitle">
+        Selamat datang di dunia kami
       </p>
-      <ion-button expand="full" color="primary" routerLink="/stories">
-        Explore More
-      </ion-button>
+      <p class="mt-6 text-lg text-gray-200 max-w-md">
+        Klik aku si 
+        <span (click)="navigateToLogin('Y')" class="text-pink-300 hover:text-pink-100 font-bold profile-link">Y</span> 
+        atau aku si
+        <span (click)="navigateToLogin('K')" class="text-blue-300 hover:text-blue-100 font-bold profile-link">K</span>
+      </p>
+      
+      <button class="modern-btn" routerLink="/stories">
+        Jelajahi Cerita Kami ↓
+      </button>
     </div>
   </div>
 
   <!-- Stories Section -->
-  <div id="section2" class="h-screen flex flex-col items-center justify-center bg-gray-800 p-6 md:p-12">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Stories</h2>
-    <p class="text-lg text-gray-300 text-center max-w-2xl">Klik di bawah ini</p>
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <img src="./assets/img/story1.jpg" class="w-full h-40 object-cover rounded-md" alt="Story Image">
-        <h3 class="text-lg md:text-xl font-semibold mt-4">Amazing Sunset</h3>
-        <p class="mt-2 text-gray-300">A beautiful sunset captured from the hills.</p>
+  <div id="section2" class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 to-gray-800 py-16 px-6 md:px-12">
+    <h2 class="text-4xl md:text-5xl font-bold mb-6 text-center bg-gradient-to-r from-pink-400 to-blue-400 bg-clip-text text-transparent">
+      Kisah Kami
+    </h2>
+    <p class="text-lg text-gray-300 text-center max-w-2xl mb-12">
+      Momen berharga yang kami abadikan bersama
+    </p>
+    <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="modern-card h-full">
+        <div class="h-48 overflow-hidden">
+          <img src="./assets/img/story1.jpg" alt="Story Image">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Matahari Terbenam</h3>
+          <p class="text-gray-300">Keindahan senja yang kami nikmati bersama di puncak bukit.</p>
+        </div>
       </div>
-      <div class="bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <video class="w-full h-40 rounded-md" controls>
-          <source src="./assets/videos/story1.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <h3 class="text-lg md:text-xl font-semibold mt-4">Adventure Begins</h3>
-        <p class="mt-2 text-gray-300">An exciting adventure through the mountains.</p>
+      
+      <div class="modern-card h-full">
+        <div class="h-48 overflow-hidden">
+          <video controls poster="./assets/img/story1-thumb.jpg">
+            <source src="./assets/videos/story1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Petualangan Kami</h3>
+          <p class="text-gray-300">Perjalanan seru menyusuri pegunungan yang penuh tantangan.</p>
+        </div>
       </div>
-      <div class="bg-gray-700 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <img src="./assets/img/story2.jpg" class="w-full h-40 object-cover rounded-md" alt="Story Image">
-        <h3 class="text-lg md:text-xl font-semibold mt-4">City Lights</h3>
-        <p class="mt-2 text-gray-300">A stunning view of the city at night.</p>
+      
+      <div class="modern-card h-full">
+        <div class="h-48 overflow-hidden">
+          <img src="./assets/img/story2.jpg" alt="Story Image">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-semibold mb-2">Cahaya Kota</h3>
+          <p class="text-gray-300">Pemandangan menakjubkan kota di malam hari.</p>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- Parallax Section 2 -->
-  <div class="parallax">
+  <div class="parallax" id="parallax2">
     <div class="parallax-bg" style="background-image: url('./assets/img/bg2.jpg');"></div>
     <div class="parallax-content">
-      <h2 class="text-3xl md:text-5xl font-bold">Discover More</h2>
-      <p class="mt-4 text-lg text-gray-300">Find out what makes this couple website special</p>
+      <h2 class="text-4xl md:text-6xl font-bold mb-4">Temukan Lebih Banyak</h2>
+      <p class="text-xl text-gray-200 max-w-2xl">
+        Setiap hari adalah halaman baru dalam buku cerita kami
+      </p>
+      <button class="modern-btn mt-8" routerLink="/more">
+        Lanjutkan Perjalanan →
+      </button>
     </div>
   </div>
 </ion-content>
-
-<script>
-  // Efek parallax dengan JavaScript
-  document.addEventListener("scroll", function () {
-    let scrolled = window.scrollY;
-    let parallaxBg = document.querySelectorAll(".parallax-bg");
-
-    parallaxBg.forEach((bg) => {
-      bg.style.transform = `translateY(${scrolled * 0.5}px)`;
-    });
-  });
-</script>
