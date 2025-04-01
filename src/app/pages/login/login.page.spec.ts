@@ -21,7 +21,7 @@ describe('LoginPage', () => {
         {
           provide: ActivatedRoute,
           useValue: {
-            queryParams: of({ profile: 'test' }) // Mock queryParams
+            queryParams: of({ email: 'test' }) // Mock queryParams
           }
         }
       ]
@@ -36,8 +36,8 @@ describe('LoginPage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize with profile from query params', () => {
-    expect(component.profile).toEqual('test');
+  it('should initialize with email from query params', () => {
+    expect(component.email).toEqual('test');
   });
 
   // Tambahkan test case lainnya di sini

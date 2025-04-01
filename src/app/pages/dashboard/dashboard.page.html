@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-toolbar class="bg-blue-600 text-white">
+      <ion-title>Facebook</ion-title>
+      <ion-buttons slot="start">
+        <ion-button class="text-white">
+          <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button class="text-white">
+          <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+        </ion-button>
+        <ion-button class="text-white">
+          <ion-icon slot="icon-only" name="chatbubble-ellipses-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <!-- Pastikan ion-content memiliki fullscreen dan scroll-y -->
+  <ion-content class="bg-gray-100" fullscreen="true" scroll-y="true">
+    
+    <!-- Story Highlights -->
+    <div class="bg-white px-2 py-3 border-b border-gray-300">
+      <div class="w-full overflow-x-auto pb-2">
+        <div class="inline-flex space-x-2 px-2">
+          <div class="flex flex-col items-center w-20 flex-shrink-0">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-r from-orange-400 to-pink-500 p-0.5 flex items-center justify-center bg-gray-200">
+              <ion-icon name="add" class="text-blue-600 text-2xl"></ion-icon>
+            </div>
+            <div class="text-xs mt-1 w-full truncate text-center">Your Story</div>
+          </div>
+          <div class="flex flex-col items-center w-20 flex-shrink-0" *ngFor="let i of [1,2,3,4,5]">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-r from-orange-400 to-pink-500 p-0.5">
+              <img src="https://i.pravatar.cc/150?img={{i}}" alt="User" class="w-full h-full rounded-full border-2 border-white object-cover">
+            </div>
+            <div class="text-xs mt-1 w-full truncate text-center">Friend {{i}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Create Post -->
+    <div class="bg-white p-3 my-2 rounded-lg">
+      <ion-item class="--padding-start:0; --inner-padding-end:0">
+        <ion-avatar slot="start" class="w-10 h-10">
+          <img src="https://i.pravatar.cc/150?img=6" alt="You" class="w-full h-full">
+        </ion-avatar>
+        <ion-input placeholder="What's on your mind?" class="placeholder-gray-500"></ion-input>
+      </ion-item>
+     
+    </div>
+  
+    
+  </ion-content>
+  
+  <!-- Bottom Navigation -->
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="bg-white border-t border-gray-300">
+      <ion-tab-button tab="home" class="text-gray-500 text-selected:text-blue-500">
+        <ion-icon name="home"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="watch" class="text-gray-500 text-selected:text-blue-500">
+        <ion-icon name="play-circle"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="notifications" class="text-gray-500 text-selected:text-blue-500">
+        <ion-icon name="notifications"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="menu" class="text-gray-500 text-selected:text-blue-500">
+        <ion-icon name="menu"></ion-icon>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+  

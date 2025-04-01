@@ -1,0 +1,68 @@
+<div class="min-h-screen bg-gray-100">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-blue-500 text-white py-4 px-6 flex justify-between items-center shadow-md">
+      <h1 class="text-2xl font-bold">User Management Dashboard</h1>
+      <button (click)="logout()" class="bg-red-500 hover:bg-red-600 px-4 py-2 rounded-lg font-medium transition transform hover:scale-105 shadow">
+        Logout
+      </button>
+    </header>
+  
+    <!-- Main Content -->
+    <main class="container mx-auto p-6">
+      <!-- Current User Profile Card -->
+      <div class="max-w-md mx-auto bg-white rounded-xl shadow-2xl overflow-hidden mb-8 transition duration-500 transform hover:-translate-y-1">
+        <div class="bg-gradient-to-r from-blue-500 to-indigo-600 p-6 text-center">
+          <img src="assets/img/user.png" alt="User Avatar" class="w-24 h-24 rounded-full mx-auto border-4 border-white shadow-lg">
+        </div>
+        <div class="p-6 text-center">
+          <h2 class="text-2xl font-bold text-gray-800 mb-1">{{ user.username }}</h2>
+          <p class="text-blue-600 font-medium mb-3">{{ user.email }}</p>
+          <div class="flex justify-center space-x-4 mt-4">
+            <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">Active</span>
+            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">Verified</span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Users Grid Section -->
+      <div class="mb-8">
+        <h2 class="text-xl font-semibold text-gray-800 mb-6">All Users</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          @for (user of users; track user.username) {
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+              <div class="bg-indigo-100 p-4 flex items-center">
+                <img src="assets/img/user.png" alt="User" class="w-12 h-12 rounded-full mr-4 border-2 border-white">
+                <div>
+                  <h3 class="font-bold text-gray-800">{{user.username}}</h3>
+                  <p class="text-sm text-indigo-600">{{user.role}}</p>
+                </div>
+              </div>
+              <div class="p-4">
+                <div class="flex items-center text-sm text-gray-600 mb-2">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                  </svg>
+                  {{user.email}}
+                </div>
+                <div class="flex items-center text-sm text-gray-600">
+                  <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                  </svg>
+                  Joined {{user.joinDate}}
+                </div>
+              </div>
+              <div class="bg-gray-50 px-4 py-3 flex justify-end space-x-2">
+                <button class="text-sm bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded transition">
+                  Edit
+                </button>
+                <button class="text-sm bg-gray-200 hover:bg-gray-300 text-gray-800 px-3 py-1 rounded transition">
+                  View
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </main>
+  </div>
